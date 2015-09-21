@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>脚本控制交互元素&lt;details&gt;,&lt;summary&gt;</title>
+    <style>
+        article{ width:80%; margin:2% auto; font-size: 13px;}
+        span{font-weight: bold; margin-top: 20px; display: block; cursor:pointer;}
+        details{
+            overflow:hidden;
+            height:auto;
+            padding-left:10%;
+            position:relative;
+            display:block;
+        }
+    </style>
+    <script>
+        function span_click(){
+            var objId = document.getElementById("mydetails");
+            var attId = objId.getAttribute("open");  // 获取元素属性open值
+
+            if(attId !="open"){
+                objId.setAttribute("open","open");// 设置元素属性open值
+            }else{
+                objId.removeAttribute("open");
+            }
+
+        }
+    </script>
+</head>
+<body>
+<article>
+    <span onclick="span_click()">控制脚注&lt;details&gt;</span>
+    <details id="mydetails">
+        <summary>说明文档标题</summary>
+        本段脚注内容可通过点击控制显示
+    </details>
+    <p>注：目前只有 Chrome 和 Safari 6 支持 &lt;details&gt;，&lt;summary&gt;标签。<br/>&nbsp;&nbsp;"summary" 元素应该是 "details" 元素的第一个子元素</p>
+</article>
+</body>
+</html>

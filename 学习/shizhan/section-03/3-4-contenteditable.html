@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5公用属性contenteditable</title>
+    <style>
+        article{ width: 60%; height: auto; margin: 2% auto; padding: 5%; box-sizing: border-box; overflow: hidden; border:1px solid #0000FF;}
+        .msg{ font-size: 14px; color:red; margin-top: 20px;}
+    </style>
+    <script>
+        function Btn_Click(){
+            var strArt = document.getElementById("art").innerHTML;
+            var strShow = document.getElementById("show");
+            strShow.innerHTML = "编辑后为："+strArt;
+        }
+    </script>
+</head>
+<body>
+<article>
+    <h5><mark>contenteditable</mark>：元素内容可编辑属性</h5>
+    <p contenteditable="true" id="art">
+        这是一段可编辑的文字
+    </p>
+    <input type="button" onclick="Btn_Click()" value="保存">
+    <p id="show"></p>
+    <p class="msg">所有主流浏览器都支持 contenteditable 属性。</p>
+</article>
+</body>
+</html>

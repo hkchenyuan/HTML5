@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5中表单form验证</title>
+</head>
+<body>
+    <script>
+        function check(){
+            var email = document.getElementById("email");
+            if(email.value ==""){
+//                document.getElementById("mess").innerHTML = "请输入email";
+//                document.getElementById("mess").setAttribute("style","font-size:9px; color:red;");
+                alert("请输入email！")
+            }else if(!email.checkValidity()){
+//                document.getElementById("mess").innerHTML = "请输入正确的email";
+//                document.getElementById("mess").setAttribute("style","font-size:9px; color:red;");
+                alert("请输入正确的email！")
+            }
+        }
+    </script>
+    <form id="testform" onsubmit="check()" novalidate="true">
+        <laber for="email">Email</laber>
+        <input name="email" type="email" id="email">
+        <laber id="mess"></laber>
+        <!--<input type="button" onclick="check()" value="验证"><br/>-->
+        <input type="submit" >
+    </form>
+</body>
+</html>

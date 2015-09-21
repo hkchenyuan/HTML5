@@ -1,0 +1,7 @@
+*{margin:0; padding: 0;}
+#wrapper{ width: 1200px; margin: 0 auto;}
+.header{ width: 1180px; margin:0 10px; background: #779307;}
+.navigation ul li{ display: inline-block;}
+.sidebar{ float:left; width: 300px; margin: 0 10px; background: #fe9c00;}
+.content{ float: left; width: 860px; margin: 0 10px; background: #dedede;}
+.footer{ width: 1180px; margin:0 10px; clear: both; background: #663300;}

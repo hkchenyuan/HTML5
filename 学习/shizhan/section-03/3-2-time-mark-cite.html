@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5文本层次语义元素：time、mark、cite</title>
+    <style>
+        article{ width: 60%; height: auto; margin: 2% auto; padding: 5%; box-sizing: border-box;overflow: hidden; border:1px solid #0000FF;}
+        .msg{ font-size: 14px; color:red; margin-top: 20px;}
+    </style>
+</head>
+<body>
+<article>
+<p>
+    <time datetime="2015-9-2">
+        time标签元素用于定义时间或日期，该元素可以代表24小时中的某一时刻，表示时刻时，允许有时差
+    </time>
+</p>
+    <p>
+        <time datetime="2015-09-08T09:00">
+            2015年9月8日9点，datetime="2015-09-08T09:00" 表示日期和时间，中间字母“T”进行分隔，最后加字母“Z”，表示获取的是UTC(世界统一时间)格式。
+        </time>
+    </p>
+    <p>
+        <time datetime="2015-10-01">
+            将于2015-10-01放假，表示的是将来时间
+        </time>
+    </p>
+    <p>
+        <time datetime="2015-09-08" pubdate="true">
+            指示 time 元素中的日期 / 时间是文档（或 article 元素）的发布日期。
+        </time>
+    </p>
+    <p class="msg">注：目前所有主流浏览器都不支持 &lt;time&gt; 标签。time标签表示的是日期时间，页面在解析时，获取的是属性“datetime”中的值，而标记中的内容只是用于显示在页面中</p>
+    <br/>
+    <p>
+        <h5><mark>mark</mark> 元素功能是在文本中高亮显示字符</h5>
+        <span>
+            <mark>mark</mark> 元素：表示高亮显示<br/>
+            <em>em</em> 元素：表示突出重点<br/>
+            <strong>strong</strong> 元素：表示对文字重要性进行强调<br/>
+            <del>del</del> 元素：表示删除文字<br/>
+            <cite>cite</cite> 元素：表示参考文献的引用说明，如：---引自<< <cite>HTML5实战</cite> >>---
+        </span>
+    </p>
+    <p class="msg">注：Internet Explorer 8 以及更早的版本不支持 mark 标签</p>
+
+</article>
+</body>
+</html>
