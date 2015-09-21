@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增input表单元素类型及组合表单的fieldset元素</title>
+    <style>
+        section{ width: 60%; height: auto; margin: 2% auto; padding: 2%; box-sizing: border-box; overflow: hidden; border:1px solid #0000FF;}
+        .msg{ font-size: 14px; color:red; margin-top: 20px;}
+        fieldset{padding: 20px;}
+    </style>
+</head>
+<body>
+<section>
+    <figure>
+        <figcaption>input元素新增类型浏览器支持：</figcaption>
+        <img src="../images/input.png"/>
+    </figure>
+    <form id="form1" action="" method="">
+        <fieldset form="form1">
+            <legend>No.1 email类型input元素</legend>
+            <input type="email" name="myEmail" placeholder="请输入邮箱地址" required="true"  multiple="true"/>
+            <input type="submit" name="sub" value="提交"/>
+            <label class="msg">内容为空时不检测，required="true" 检测是否为空，multiple属性允许输入一串用逗号分隔的Email地址</label>
+        </fieldset>
+    </form><br/>
+
+    <form id="form2" action="" method="">
+        <fieldset form="form2">
+            <legend>No.2 url类型input元素</legend>
+            <input type="url" name="urlText" placeholder="请输入网址"  multiple="true"/>
+            <input type="submit" name="sub" value="提交"/>
+            <label class="msg">chrome浏览器必须输入带http://，该元素multiple属性允许输入一串用逗号分隔的Url地址</label>
+        </fieldset>
+    </form><br/>
+
+    <form id="form3" action="" method="">
+        <fieldset form="form3">
+            <legend>No.3 number类型input元素</legend>
+            <input type="number" name="year" id="year" min="1910" max="2015" step="1" value="2000" onchange="num_Change()"/>年
+            <input type="number" name="month" id="month" min="1" max="12" step="1" value="1" onchange="num_Change()"/>月
+            <input type="number" name="day" id="day" min="1" max="31" step="1" value="1"/>日
+            <input type="submit" name="sub" value="提交"/>
+            <label class="msg">内容为空时不检测</label>
+        </fieldset>
+    </form><br/>
+    <script>
+        function num_Change(){
+            var year =document.getElementById("year");
+            var month =document.getElementById("month");
+            var day =document.getElementById("day");
+            var yearNum = parseInt(document.getElementById("year").value);
+            var monthNum = parseInt(document.getElementById("month").value);
+            var dayNum = parseInt(document.getElementById("day").value);
+            if( monthNum == 4 ||  monthNum == 6 || monthNum == 9 ||  monthNum == 11){
+                day.max = 30;
+                day.value = 30;
+            }else if( monthNum == 2){
+                if( yearNum % 4 == 0 && yearNum % 100 != 0 || yearNum % 400 == 0){
+                    day.max = 29;
+                    day.value = 29;
+                }else{
+                    day.max = 28;
+                    day.value = 28;
+                }
+            }else{
+                day.max = 31;
+                day.value = 31;
+            }
+        }
+    </script>
+
+    <form id="form4" action="" method="">
+        <fieldset form="form4" id="pColor">
+            <legend>No.4 range类型input元素</legend>
+            <input type="range" id="colR" value="255" min="0" max="255" step="1" onchange="range_Change()"/>
+            <input type="range" id="colB" value="255" min="0" max="255" step="2" onchange="range_Change()"/>
+            <input type="range" id="colG" value="255" min="0" max="255" step="3" onchange="range_Change()"/><br/>
+            <label class="msg" style="background: #fff;" id="textColor">rgb(255,255,255)</label>
+        </fieldset>
+    </form><br/>
+    <script>
+        function $$(id){
+            return document.getElementById(id);
+        }
+        function range_Change(){
+            var colR = $$("colR").value;
+            var colB = $$("colB").value;
+            var colG = $$("colG").value;
+            var strColor = "rgb("+colR+","+colB+","+colG+")";
+            $$("pColor").style.background = strColor;
+            $$("textColor").innerHTML = strColor;
+        }
+    </script>
+
+    <p>No.5 Date pickers类型input元素</p>
+    <form id="form5" action="" method="">
+        <fieldset form="form5">
+            <legend>1、日期 <mark>date</mark> 与时间 <mark>time</mark>类型输入框</legend>
+            <input type="date" name=""/>
+            <input type="time" name=""/>
+        </fieldset>
+
+        <fieldset form="form5">
+            <legend>2、月份 <mark>month</mark> 与星期 <mark>week</mark>类型输入框</legend>
+            <input type="month" name=""/>
+            <input type="week" name=""/>
+        </fieldset>
+
+        <fieldset form="form5">
+            <legend>3、日期时间型 <mark>datetime</mark> 与 <mark>datetime-local</mark>类型输入框</legend>
+            <input type="datetime" name=""/>
+            <input type="datetime-local" name=""/>
+        </fieldset>
+        <input type="submit" name="sub" value="提交"/>
+    </form><br/>
+
+    <form id="form6" onsubmit="return showSearchWord()">
+        <fieldset form="form6">
+            <legend>No.6 search类型input输入框</legend>
+            <input type="search" id="search" placeholder="请输入搜索关键词"/><label class="msg"> 注：search类型与text类型差别在输入框右侧“X”</label><br/>
+            <input type="submit" name="sub" value="搜索"/>
+            <h5 id="textShow"></h5>
+        </fieldset>
+    </form>
+    <script>
+        function showSearchWord(){
+            var searchWord = "您输入的搜索关键词为：" + $$("search").value;
+            $$("textShow").innerHTML = searchWord;
+            return false;
+        }
+    </script>
+
+</section>
+</body>
+</html>

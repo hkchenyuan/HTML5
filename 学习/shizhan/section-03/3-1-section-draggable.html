@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="#" target="_blank">  <!--base可设置页面URL为空时的值-->
+    <meta charset="UTF-8">
+    <title>HTML5节点元素：section</title>
+    <style>
+        article{ width: 60%; height: auto; margin: 2% auto; padding: 5%; box-sizing: border-box;overflow: hidden; border:1px solid #0000FF;}
+        .msg{ font-size: 14px; color:red; margin-top: 20px;}
+        #div1 {width:45%; float: left; height:200px;padding:10px;border:1px solid #aaaaaa; margin-bottom: 20px;}
+        #div2 {width:45%; float: right; height:200px;padding:10px;border:1px solid #aaaaaa; margin-bottom: 20px;}
+        section{ clear: both; display: block; }
+        nav{ clear: both; display: block; }
+        hgroup{ clear: both; display: block; }
+        address{ clear: both; display: block; }
+
+    </style>
+    <script type="text/javascript">
+        function allowDrop(ev)
+        {
+            ev.preventDefault();// 默认地，无法将数据/元素放置到其他元素中。如果需要设置允许放置，我们必须阻止对元素的默认处理方式。
+        }
+
+        function drag(ev)
+        {
+            ev.dataTransfer.setData("Text",ev.target.id);
+            //dataTransfer.setData() 方法设置被拖数据的数据类型和值：
+            //在这个例子中，数据类型是 "Text"，值是可拖动元素的 id ("drag1")。
+        }
+
+        function drop(ev)
+        {
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+//        进行放置 - ondrop 属性调用了一个函数，drop(event)
+//        代码解释：
+//        调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）
+//        通过 dataTransfer.getData("Text") 方法获得被拖的数据。该方法将返回在 setData() 方法中设置为相同类型的任何数据。
+//        被拖数据是被拖元素的 id ("drag1")
+//        把被拖元素追加到放置元素（目标元素）中
+    </script>
+    <noscript>您的浏览器不支持javaScript!</noscript>
+</head>
+<body>
+<article>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div> <!--进行放置 - ondrop-->
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div> <!--进行放置 - ondrop-->
+
+    <!--ondragover 事件规定在何处放置被拖动的数据。-默认地，无法将数据/元素放置到其他元素中。
+    如果需要设置允许放置，我们必须阻止对元素的默认处理方式。这要通过调用 ondragover 事件的 event.preventDefault() 方法-->
+    <section id="drag1" draggable="true" ondragstart="drag(event)"><!--设置元素为可拖放draggable="true"--ondragstart 属性调用了一个函数，drag(event)，它规定了被拖动的数据-->
+        <h1>这是一个可拖动的Html5节点元素：section</h1>
+        <p>draggable属性为true说明该元素为一可拖动的区段</p>
+        <p class="msg">section：定义文档中的节（section、区段）,比如章节、页眉、页脚或文档中的其他部分</p>
+    </section>
+    <br/>
+
+    <img id="drag2" src="../images/icon_05.png" draggable="true"  ondragstart="drag(event)" title="这是一个可拖动的img元素">
+    <nav id="drag3" draggable="true" ondragstart="drag(event)">
+        <a href="">这是一个nav导航区域</a>
+        <a href="">图书</a>
+        <a href="">论坛</a>
+    </nav>
+    <p class="msg">提示：nav为html5导航元素，可将具有导航性质的链接归纳到这一区域</p>
+    <br/>
+
+    <hgroup id="drag4" draggable="true" ondragstart="drag(event)">
+        <figcaption>hgroup:标题组群</figcaption>
+        <h1>与figcaption结合使用</h1>
+        <h1>figcaption说明组功能</h1>
+    </hgroup>
+    <p class="msg">注：hgroup在最新的 HTML5.1 版中被废除了</p>
+    <br/>
+
+    <address title="作者联系方式">
+        address：用于定义文档作者或所有者的相关联系方式
+    </address>
+    <br/>
+
+    <ul>
+        <li>ul元素</li>
+        <li>
+            无序列表
+            <ul>
+                <li>列一：html5不支持ul、li的type属性</li>
+                <li>列二：html5不支持ul、li的compact属性</li>
+            </ul>
+        </li>
+        <li>ol元素</li>
+        <li>
+            有序列表
+            <ol id="olList" type="a">
+                <li>type属性：设置序列类型为1、a、I等，默认为数字</li>
+                <li>start属性：自定义列表的开始编号</li>
+                <li>reversed属性：设定列表是否反向排序</li>
+                <li>上两属性为html5新增属性</li>
+            </ol>
+            <input id="num" type="text" name="" value="2" style="width:40px;"/>
+            <input id="strAble" type="checkbox" name=""/>降序
+            <input id="btn" type="button" value="设置" onclick="Btn_set()"/>
+            <script>
+                function Btn_set(){
+                    var num=parseFloat(document.getElementById("num").value);
+//                    var num=document.getElementById("num").value;
+                    var strAble=document.getElementById("strAble");
+                    var olList=document.getElementById("olList");
+                    olList.setAttribute("start",num);
+                    if(strAble.checked){
+                        olList.setAttribute("reversed",true);
+                    }else{
+                        olList.removeAttribute("reversed");
+                    }
+                }
+            </script>
+        </li>
+        <li>
+            <dl>
+                <dt>dl元素</dt>
+                <dd>元素dl表示一个术语列表</dd>
+                <dd>包含的术语元素dt与定义元素dd都不允许重复内容出现</dd>
+                <dt>dt元素</dt>
+                <dd>元素dt表示带名字的术语</dd>
+                <dd>每个术语元素后面可以跟多个定义术语的dd元素</dd>
+            </dl>
+        </li>
+    </ul>
+    <br/>
+
+</article>
+</body>
+</html>

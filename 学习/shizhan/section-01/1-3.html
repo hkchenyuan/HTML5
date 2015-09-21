@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>设置新元素的样式</title>
+    <style>
+        header,nav,article,footer{ border:0.0625em solid #0061D8; display:block; box-sizing:border-box;}
+        /*box-sizing属性值为“border-box”，这样就会把borders和padding全都包含在定义的宽高里面*/
+        header{ width: 80%; margin: 0 auto; height:100px;}
+        section{ width: 80%; margin: 0 auto; height:auto; min-height: 500px; }
+        nav{ float:left; width:30%; height:500px;}
+        article{ float:left; width:70%; min-height:600px; padding: 2%;}
+        article header{ border:none; width:auto; height: auto;}
+        article header p{ font-size:13px; color:#047314;}
+        article header h1{font-size:16px; font-weight:bold;}
+        .p-date{font-size:11px; color:#0000FF;}
+        footer{ clear: both; width:80%; margin:0 auto; height: 100px;}
+    </style>
+    <!--[if lt IE 9]>
+    <script>
+        document.createElement('header');
+        document.createElement('nav');
+        document.createElement('article');
+        document.createElement('footer');
+    </script>
+    <![endif]-->
+</head>
+<body>
+<header>头部导航</header>
+<section>
+    <nav>侧边菜单</nav>
+    <article>
+        <header>
+            <p class="p-date">日期：2015-09-01</p>
+            <h1><a>今天下雨了，挺冷！</a></h1>
+            <p>北京也堵车了，迟到5分钟！</p>
+            <p>注释：Internet Explorer 8 以及更早的版本不支持 header,nav,article,footer 标签</p>
+        </header>
+    </article>
+</section>
+<footer>底部说明</footer>
+</body>
+</html>

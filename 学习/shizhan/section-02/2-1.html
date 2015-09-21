@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交互元素&lt;details&gt;的使用</title>
+    <style>
+        article{ width:80%; margin:2% auto; font-size: 13px;}
+        span{font-weight: bold; margin-top: 20px; display: block;}
+        details{
+            overflow:hidden;
+            height:auto;
+            padding-left:10%;
+            position:relative;
+            display:block;
+        }
+        details[open]{height:auto;}
+    </style>
+</head>
+<body>
+<article>
+    <span>隐藏脚注</span>
+    <details>本页面生成于：<small>2015-09-01</small></details>
+
+    <span>显示脚注</span>
+    <details open>本页面将显示脚注内容！</details>
+    <p>注：目前只有 Chrome 和 Safari 6 支持 &lt;details&gt;标签。</p>
+</article>
+</body>
+</html>

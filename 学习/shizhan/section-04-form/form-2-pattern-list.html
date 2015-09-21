@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input元素新增属性pattern、list、autocomplete等</title>
+    <style>
+        section{ width: 60%; height: auto; margin: 2% auto; padding: 2%; box-sizing: border-box; overflow: hidden; border:1px solid #0000FF;}
+        .msg{ font-size: 14px; color:red; margin-top: 20px;}
+        fieldset{padding: 20px;}
+    </style>
+</head>
+<body>
+<section>
+    <figure>
+        <figcaption><h4>input新增属性浏览器支持：</h4></figcaption>
+        <img src="../images/input-att.png"/>
+    </figure>
+    <p>
+        1、autocomplete 属性规定 form 或 input 域应该拥有自动完成功能。<br/>
+        2、autofocus 属性规定在页面加载时，域自动地获得焦点。<br/>
+        3、form 属性规定输入域所属的一个或多个表单。<br/>
+        4、form override attributes允许您重写 form 元素的某些属性设定：formaction、formenctype、formmethod、formnovalidate、formtarget。<br/>
+        5、list 属性规定输入域的 datalist。datalist 是输入域的选项列表。<br/>
+        6、multiple 属性规定输入域中可选择多个值。适用于以下类型：email 和 file<br/>
+        7、novalidate 属性规定在提交表单时不应该验证 form 或 input 域<br/>
+        8、pattern 属性规定用于验证 input 域的模式（pattern）。<br/>
+        9、required 属性规定必须在提交之前填写输入域（不能为空）。
+    </p>
+    <form id="form1" action="">
+        <fieldset>
+            <legend>No.1 <mark>pattern</mark> 属性to input元素</legend>
+            <input type="text" placeholder="字母开头6-8位字母数字下划线字符串" pattern="^[a-zA-Z]\w{5,7}$"/>
+            <input type="submit" value="提交"/>
+        </fieldset>
+    </form><br/>
+
+    <form id="form2" action="#" method="get" autocomplete="on">
+        <fieldset>
+            <legend>No.2 <mark>autocomplete</mark> 属性to input元素</legend>
+            姓名：<input type="text" name="name"  required="required"/>
+            数字：<input type="number" name="num"  required="required"/>
+            邮箱：<input type="email" name="email" required="required"/>
+            不自动完成：<input type="text" name="email" autocomplete="off" required="required"/>
+            <input type="submit" value="提交"/>
+            <h5>请填写并提交此表单，然后重载页面，来查看自动完成功能是如何工作的：自动完成功能在您再次输入时会自动提示</h5>
+            <p class="msg">请注意，其中number类型表单自动完成不起作用，不自动完成 域是关闭的。required="required"验证不允许为空</p>
+        </fieldset>
+    </form><br/>
+
+    <form id="form3" action="#">
+        <fieldset>
+            <legend>No.3 <mark>form overrides</mark> 属性to input元素</legend>
+            邮箱：<input type="email" name="email" placeholder="please input email!" autofocus/>
+            <input type="submit" value="提交"/>
+            <input type="submit" formaction="http://www.baidu.com" value="提交到百度"/>
+            <input type="submit" formnovalidate="formnovalidate" value="不验证提交"/>
+            <p class="msg">注释：表单重写属性适用于以下类型的 <input> 标签：submit 和 image</p>
+        </fieldset>
+    </form><br/>
+
+    <form id="form4" action="#">
+        <fieldset>
+            <legend>No.4 <mark>list </mark> 属性,规定输入域的 datalist</legend>
+            <input type="url" list="url_list" name="link"/>
+            <datalist id="url_list">
+                <option label="baidu" value="http://www.baidu.com"></option>
+                <option label="qq">http://www.qq.com</option>
+                <option label="Google" value="http://www.google.com.cn"></option>
+            </datalist>
+            <input type="submit" value="提交"/>
+            <p class="msg">list 属性适用于以下类型的 input 标签：text, search, url, email, date pickers, number, range 以及 color。</p>
+        </fieldset>
+    </form><br/>
+
+    <form id="form5" action="#">
+        <fieldset>
+            <legend>No.5 <mark>multiple </mark> 属性to input元素</legend>
+            选择文件：<input type="file" multiple="multiple" name="file"/>
+            <input type="submit" value="提交"/>
+            <p class="msg">multiple 属性规定输入域中可选择多个值，适用于以下类型的 input 标签：email 和 file</p>
+        </fieldset>
+    </form>
+</section>
+</body>
+</html>
